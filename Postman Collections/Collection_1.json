@@ -392,8 +392,29 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "41ff8993-a050-4d13-804a-b5e38aaf4a00",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											"pm.sendRequest({\r",
+											"    url: pm.environment.get(\"BaseURI\") + \"/v1/contacts\",\r",
+											"    method: \"GET\",\r",
+											"    header: {\"Authorization\": pm.enviroment.get(\"token\")}\r",
+											"\r",
+											"}, \r",
+											"function(err, res){\r",
+											"    if(err){\r",
+											"        console.log(\"Error while requesting contacts: \", err)\r",
+											"    }else{\r",
+											"        let data = res.json();\r",
+											"        if(data.contacts && data.contacts.length)\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"\r",
+											"\r",
+											")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
